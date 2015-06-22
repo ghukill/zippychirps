@@ -1,8 +1,4 @@
-new_project_template
+zippychirps
 ==============
 
-Vanilla template with some of my favs:
-- bootstrap
-- jquery cookie
-- jquery mustache
-- what else?
+Need to know basis.
