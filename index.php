@@ -11,6 +11,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- analog clock -->
+    <!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+    <script type="text/javascript" src="js/coolclock.js"></script>
+    <script type="text/javascript" src="js/moreskins.js"></script>
+
     <!--jquery-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script>
 
@@ -34,6 +39,8 @@
     <script src="http://momentjs.com/downloads/moment.js"></script>
     <script src="http://momentjs.com/downloads/moment-timezone-with-data-2010-2020.js"></script>
 
+    
+
     <!-- bump PHP array to JS -->
     <script type="text/javascript">
         var peeps = <?php echo json_encode($peeps) ?>;
@@ -49,48 +56,43 @@
     <div class="container">
 
         <div class="row">
-            <h3>ZippyChirps</h3>
-            <hr>
+            <div class="col-md-12">
+                <h3>ZippyChirps</h3>
+                <hr>
+            </div>
         </div>
 
         <div class="row">
 
-            <?php foreach($peeps as $peep => $peep_array){?>
+            <?php foreach($peeps as $peep => $peep_array){ ?>
 
                 <!-- Peep -->
-                <div id="<?php echo $peep; ?>" class="col-md-6">
+                <div id="<?php echo $peep; ?>" class="peep col-md-6">
                     
                     <!-- image -->
-                    <div id="image_row" class="row">
-                        <div class="col-md-12">
-                            <img width=75 src="http://68.42.117.7:4567/get?key=<?php echo $peep; ?>_img&mime=image/jpeg" alt="..." class="img-circle">
-                        </div>
+                    <div class="col-md-12 peep_image">
+                        <img src="http://68.42.117.7:4567/get?key=<?php echo $peep; ?>_img&mime=image/jpeg" class="img-circle">
                     </div>
 
-                    <!-- Clock -->
-                    <!-- <h2>ANALOG CLOCK</h2> -->
-
-                    <!-- Location -->
-
-                    <!-- location -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p><strong>Location:</strong> <span class="latitude"></span> / <span class="longitude"></span></p>
-                        </div>
-                    </div>
+                    <!-- analog clock -->
+                    <div id="<?php echo $peep; ?>_clock" class="col-md-12"></div>                    
 
                     <!-- time -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p><strong>Current Time:</strong> <span class="timezoneString"></span></p>
-                            <p><strong>Current Time:</strong> <span class="timeString"></span></p>
-                        </div>
+                    <div class="col-md-12">
+                        <h3><span class="timeString"></span></h3>
+                        <!-- <p><span class="timezoneString"></span></p> -->
                     </div>
 
                     <!-- weather -->
-                    <iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%" src="http://forecast.io/embed/#lat=<?php echo $peep_array['latitude']; ?>&lon=<?php echo $peep_array['longitude']; ?>"> </iframe>                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <iframe id="forecast_embed" type="text/html" frameborder="0" height=200 src="http://forecast.io/embed/#lat=<?php echo $peep_array['latitude']; ?>&lon=<?php echo $peep_array['longitude']; ?>"> </iframe>
+                        </div>
+                    </div>                    
 
                 </div> <!-- close peep -->
+
+
 
             <?php } //close peep loop ?>
 
@@ -103,8 +105,10 @@
 
     <!-- fire both people -->
     <script type="text/javascript">
-        showPerson('chirps');
-        showPerson('zippy');
+        $(document).ready(function(){
+            showPerson('chirps');
+            showPerson('zippy');    
+        });        
     </script>
     
 </body>

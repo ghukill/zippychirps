@@ -1,5 +1,6 @@
 // hardcoded
 moment.tz.link('Australia/ACT|Australia/Hobart|Australia/Hobart');
+m = null;
 
 
 function getCurTime(p){
@@ -18,10 +19,9 @@ function getCurTime(p){
 		$("#"+p.ns+" .longitude").html(p.longitude);
 		
 		// update time
-		t = figTime(data['timeZoneId']);
+		t = figTime(p,data['timeZoneId']);		
 		$("#"+p.ns+" .timeString").html(t);
 		$("#"+p.ns+" .timezoneString").html(data['timeZoneName']);
-
 
 	});
 
@@ -38,16 +38,35 @@ function showPerson(p){
 }
 
 
-function figTime(timezone){
+function figTime(p,timezone){
 
-	var t = new Date().toISOString();
-	var m = moment(t);
+	var t = new Date().toISOString();	
+	m = moment(t);
 	m.tz(timezone);
-	// console.log(m.toString());
-	return m.toString();
+	console.log(m._d);
+	
+	// hour offset for analog clock
+	hour_offset = numFormat(m._offset / 60);
+
+	// fire clock	
+	clock_string = '<canvas id="'+p.ns+'_clock_canvas" class="CoolClock:Null:45:seconds:'+hour_offset+' clock"></canvas>';
+	$("#"+p.ns+"_clock").html(clock_string);	
+	CoolClock.findAndCreateClocks();
+
+	// return string
+	date_string = m.toString();
+	temp = date_string.split(" ");
+	console.log(temp);
+	date_string_return = temp[0] + ", " + temp[1] + " " + temp[2] + ", " + temp[3]
+	return date_string_return;
 
 }
 
+function numFormat(n) {
+    return (n>0?'+':'') + n;
+}
+
 $(document).ready(function(){
-	$(".fe_forecast_link").remove();
+	$(".fe_title").remove();
+
 })

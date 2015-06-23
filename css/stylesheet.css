@@ -1,7 +1,12 @@
-.container {
-	width: 1300px;
+.peep {
+	text-align:center;
 }
 
-#image_row {
-	text-align:center;
+.peep_image img {
+	width:100px;
+}
+
+.clock {
+	margin-top:10px;
+	margin-bottom:10px;
 }
