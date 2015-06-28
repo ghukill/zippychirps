@@ -98,6 +98,15 @@
 
         </div>
 
+        <div id="links" class="row">
+            <h4>Useful Links</h4>
+            <ul>
+                <li><a href="https://www.google.com/maps/d/u/0/edit?mid=zV5awlFb4iAI.kfiA5LOoArGQ">Exploring Oz (map)</a></li>
+                <li><a href="https://drive.google.com/drive/u/0/folders/0B2Ky0cf5wQuhfndSUmkySGVtR1RlV1UwTVVXOW8tcG5vMlppYi1BLXB2ZHhSZlBIbkJFX28">Oz Pictures (google drive)</a></li>
+            </ul>
+        </div>
+
+
     </div>
 
     <!-- Boostrap -->
