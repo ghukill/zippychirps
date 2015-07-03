@@ -39,6 +39,9 @@
     <script src="http://momentjs.com/downloads/moment.js"></script>
     <script src="http://momentjs.com/downloads/moment-timezone-with-data-2010-2020.js"></script>
 
+    <!-- video-js -->
+    <!--<link href="inc/video-js/video-js.css" rel="stylesheet"/>-->
+
     
 
     <!-- bump PHP array to JS -->
@@ -88,7 +91,22 @@
                         <div class="col-md-12">
                             <iframe id="forecast_embed" type="text/html" frameborder="0" height=200 src="http://forecast.io/embed/#lat=<?php echo $peep_array['latitude']; ?>&lon=<?php echo $peep_array['longitude']; ?>"> </iframe>
                         </div>
-                    </div>                    
+                    </div>
+
+                    <!-- media -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 onclick="$('#<?php echo $peep; ?>_media').fadeToggle();">Media Delights (click to toggle)</h3>
+                            <div id="<?php echo $peep; ?>_media" style="display:none;">
+                            <?php 
+                                foreach($peep_array['media'] as $media){
+                                    echo '<iframe width="420" height="315" src="https://www.youtube.com/embed/'.$media.'?rel=0" frameborder="0" allowfullscreen></iframe>';
+                                }
+                            ?>   
+                            </div>                       
+                        </div>
+                    </div>
+
 
                 </div> <!-- close peep -->
 
@@ -111,6 +129,12 @@
 
     <!-- Boostrap -->
     <script src="inc/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- video.js -->    
+    <!--<script type="text/javascript" src="inc/video-js/video.js"></script>
+    <script>
+        videojs.options.flash.swf = "inc/video-js/video-js.swf"
+    </script>-->
 
     <!-- fire both people -->
     <script type="text/javascript">
