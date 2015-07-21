@@ -14,3 +14,15 @@
 .row{
 	/*margin-top:20px;*/
 }
+
+/* Countdown */
+#countdown p {
+  display: inline-block;
+  padding: 5px;
+  background: #FFA500;
+  margin: 0 0 20px;
+}
+
+.countdown_text {
+	font-weight:bold;
+}
