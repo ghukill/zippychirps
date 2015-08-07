@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>ZippyChirps</title>
+    <title>ZippyChirps - Celebration!</title>
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,7 +42,26 @@
     <!-- video-js -->
     <!--<link href="inc/video-js/video-js.css" rel="stylesheet"/>-->
 
-    
+    <style>
+	    body { 
+		  background: url('inc/confetti.gif') no-repeat center center fixed; 
+		  -webkit-background-size: cover;
+		  -moz-background-size: cover;
+		  -o-background-size: cover;
+		  background-size: cover;
+		}
+		.pulsing_text{
+			-webkit-animation: pulsate 5s ease-out;
+    		-webkit-animation-iteration-count: infinite;
+		}
+		@-webkit-keyframes pulsate {
+		    /*0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}*/
+		    0% {opacity: 0.0;}
+		    50% {opacity: 1.0;}
+		    100% {opacity: 0.0;}
+		}
+	</style>
+	    
 
     <!-- bump PHP array to JS -->
     <script type="text/javascript">
@@ -55,25 +74,16 @@
 </head>
 
 <body>
-	
     <div class="container">
 
         <div class="row">
             <div class="col-md-12">
-                <h3>ZippyChirps</h3>
+                <a href="index.php"><h3>ZippyChirps</h3></a>
             </div>
             <div class="col-md-12" style="text-align:center;">
 
                 <div id="countdown">
-                    <p class="">T-Minus...</p>
-                    <p class="countdown_text days">00</p>
-                    <p class="timeRefDays">days</p>
-                    <p class="countdown_text hours">00</p>
-                    <p class="timeRefHours">hours</p>
-                    <p class="countdown_text minutes">00</p>
-                    <p class="timeRefMinutes">minutes</p>
-                    <p class="countdown_text seconds">00</p>
-                    <p class="timeRefSeconds">seconds</p>
+                    <h1 class="pulsing_text" style="font-size:600%; font-weight:bold; color:rgb(0, 250, 136); ">Whoo-hoo!  Digity-dip!</h1>                    
                 </div>
             </div>
             <div class="col-md-12">
@@ -161,93 +171,7 @@
         });        
     </script>
 
-    <script type="text/javascript">
-        /*
-        * Basic Count Down to Date and Time
-        * Author: @mrwigster / trulycode.com
-        */
-        (function (e) {
-          e.fn.countdown = function (t, n) {
-          function i() {
-            eventDate = Date.parse(r.date) / 1e3;
-            currentDate = Math.floor(e.now() / 1e3);
-            if (eventDate == currentDate) {
-              window.location = "./celebration.php"
-              // n.call(this);
-              // clearInterval(interval)
-            }
-            else if (eventDate < currentDate) {
-              window.location = "./celebration.php"
-              // n.call(this);
-              // clearInterval(interval)
-            }
-            else if (eventDate <= currentDate) {
-              n.call(this);
-              clearInterval(interval)
-            }
-            
-            // else if (eventDate == currentDate){
-            //     alert('whoo!');
-            // }
-            // else {
-            //     console.log('all done!');
-            //     window.location = "http://www.google.com/"
-            //     return;
-            // }
-            seconds = eventDate - currentDate;
-            days = Math.floor(seconds / 86400);
-            seconds -= days * 60 * 60 * 24;
-            hours = Math.floor(seconds / 3600);
-            seconds -= hours * 60 * 60;
-            minutes = Math.floor(seconds / 60);
-            seconds -= minutes * 60;
-            days == 1 ? thisEl.find(".timeRefDays").text("day") : thisEl.find(".timeRefDays").text("days");
-            hours == 1 ? thisEl.find(".timeRefHours").text("hour") : thisEl.find(".timeRefHours").text("hours");
-            minutes == 1 ? thisEl.find(".timeRefMinutes").text("minute") : thisEl.find(".timeRefMinutes").text("minutes");
-            seconds == 1 ? thisEl.find(".timeRefSeconds").text("second") : thisEl.find(".timeRefSeconds").text("seconds");
-            if (r["format"] == "on") {
-              days = String(days).length >= 2 ? days : "0" + days;
-              hours = String(hours).length >= 2 ? hours : "0" + hours;
-              minutes = String(minutes).length >= 2 ? minutes : "0" + minutes;
-              seconds = String(seconds).length >= 2 ? seconds : "0" + seconds
-            }
-            if (!isNaN(eventDate)) {
-              thisEl.find(".days").text(days);
-              thisEl.find(".hours").text(hours);
-              thisEl.find(".minutes").text(minutes);
-              thisEl.find(".seconds").text(seconds)
-            } else {
-              alert("Invalid date. Example: 30 Tuesday 2013 15:50:00");
-              clearInterval(interval)
-            }
-          }
-          var thisEl = e(this);
-          var r = {
-            date: null,
-            format: null
-          };
-          t && e.extend(r, t);
-          i();
-          interval = setInterval(i, 1e3)
-          }
-          })(jQuery);
-          $(document).ready(function () {
-          function e() {
-            var e = new Date;
-            e.setDate(e.getDate() + 60);
-            dd = e.getDate();
-            mm = e.getMonth() + 1;
-            y = e.getFullYear();
-            futureFormattedDate = mm + "/" + dd + "/" + y;
-            return futureFormattedDate
-          }
-          $("#countdown").countdown({
-            // date: "8 August 2015 20:20:00", // Change this to your desired date to countdown to
-            date: "6 August 2015 22:00:00", // Change this to your desired date to countdown to
-            format: "on"
-          });
-        });
-    </script>
+   
     
 </body>
 
