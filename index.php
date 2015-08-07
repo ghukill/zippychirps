@@ -242,8 +242,8 @@
             return futureFormattedDate
           }
           $("#countdown").countdown({
-            // date: "8 August 2015 20:20:00", // Change this to your desired date to countdown to
-            date: "6 August 2015 22:00:00", // Change this to your desired date to countdown to
+            date: "8 August 2015 20:09:00", // Change this to your desired date to countdown to
+            // date: "6 August 2015 22:00:00", // DEBUG
             format: "on"
           });
         });
